@@ -10,7 +10,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import authRoute from './routes/auth.js';
 import userRoute from './routes/users.js';
+import postRoute from ',/routes/posts.js';
 import { register } from './controller/auth.js';
+import { createPost } from './controller/posts.js';
 
 
 //configuration of the server
@@ -41,9 +43,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 //routes with files 
 app.post("/auth/register", upload.single('picture'), register);
+app.post('./posts', verifyToken, upload.single("picture"), createPost)
 
 app.use('/auth', authRoute);
 app.use('/users', userRoute);
+app.use('/posts', postRoute)
 
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
