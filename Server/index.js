@@ -10,9 +10,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import authRoute from './routes/auth.js';
 import userRoute from './routes/users.js';
-import postRoute from ',/routes/posts.js';
+import postRoute from './routes/posts.js';
 import { register } from './controller/auth.js';
 import { createPost } from './controller/posts.js';
+import { verifyToken } from './middleware/auth.js';
 
 
 //configuration of the server
@@ -55,7 +56,7 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => {
-        console.log(`Sever is running on port ${PORT}`)
+        console.log(`Server is running on port ${PORT}`)
     })
 }).catch((err) => {
     return console.log(`${err} did not connect`)

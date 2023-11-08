@@ -1,5 +1,5 @@
 import Post from '../models/posts.js';
-import User from '../models/users.js';
+import User from '../models/user.js';
 
 
 
@@ -55,7 +55,7 @@ export const getUserPosts = async (req, res) => {
 }
 
 
-export const likePost = async (req, res) => {
+export const LikePost = async (req, res) => {
     try {
         /*const { userId, postId } = req.body;
         const post = await Post.findById(postId);
