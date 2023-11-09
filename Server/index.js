@@ -14,6 +14,9 @@ import postRoute from './routes/posts.js';
 import { register } from './controller/auth.js';
 import { createPost } from './controller/posts.js';
 import { verifyToken } from './middleware/auth.js';
+/*import User from './models/user.js';
+import Post from './models/posts.js';
+import { users, posts } from './data/index.js';*/
 
 
 //configuration of the server
@@ -57,6 +60,8 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(() => {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`)
+        /*User.insertMany(users);
+        Post.insertMany(posts);*/
     })
 }).catch((err) => {
     return console.log(`${err} did not connect`)
